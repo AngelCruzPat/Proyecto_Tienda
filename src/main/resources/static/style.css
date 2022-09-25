@@ -5,6 +5,9 @@
 a{
     text-decoration: none  !important;
 }
+.center {
+	margin-left: 25rem;
+}
 .header-top .fa.fa-wifi {
     -ms-transform: rotate(7deg); /* IE 9 */
     -moz-transform: rotate(7deg); /* IE 9 */
