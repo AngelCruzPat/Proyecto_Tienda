@@ -9,6 +9,12 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+
+.lol{
+	text-decoration:line-through;
+    color: red;
+}
 body {
   margin: 0;
 }

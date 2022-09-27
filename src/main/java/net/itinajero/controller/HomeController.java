@@ -26,4 +26,8 @@ public class HomeController {
 	public String MostrarBase() {
 		return "/base";
 	}
+	@GetMapping("/descuento")
+	public String MostrarDescuentos() {
+		return "/descuento";
+	}
 }
