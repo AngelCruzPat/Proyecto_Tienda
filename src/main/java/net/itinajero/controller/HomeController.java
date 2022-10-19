@@ -56,9 +56,77 @@ public class HomeController {
 		producto2.setPrecio("300");
 		producto2.setOferta("ninguna");
 		
+		Productos producto3 = new Productos();
+		producto3.setId(3);
+		producto3.setNombre("Peluca");
+		producto3.setDescripcion("Peluca de borregin, importados de benjaLandia");
+		producto3.setImagen("no-imagen.png");
+		producto3.setPrecio("4000");
+		producto3.setOferta("ninguna");
+		
+		Productos producto4 =new Productos();
+		producto4.setId(4);
+		producto4.setNombre("Calcetas");
+		producto4.setDescripcion("Calcetas para las patas");
+		producto4.setImagen("no-imagen.png");
+		producto4.setPrecio("25");
+		producto4.setOferta("95%");
+		
+		Productos producto5 =new Productos();
+		producto5.setId(5);
+		producto5.setNombre("Calcetas");
+		producto5.setDescripcion("Calcetas para las patas");
+		producto5.setImagen("no-imagen.png");
+		producto5.setPrecio("25");
+		producto5.setOferta("95%");
+		
+		Productos producto6 =new Productos();
+		producto6.setId(6);
+		producto6.setNombre("Cubrebocas");
+		producto6.setDescripcion("Cubrecobas con sabor a fresas");
+		producto6.setImagen("no-imagen.png");
+		producto6.setPrecio("70");
+		producto6.setOferta("ninguna");
+		
+		Productos producto7 =new Productos();
+		producto7.setId(7);
+		producto7.setNombre("aretes");
+		producto7.setDescripcion("aretes de mango con chile");
+		producto7.setImagen("no-imagen.png");
+		producto7.setPrecio("GRATISSS");
+		producto7.setOferta("100%");
+		
+		Productos producto8 =new Productos();
+		producto8.setId(8);
+		producto8.setNombre("anillos");
+		producto8.setDescripcion("anillos normales");
+		producto8.setImagen("no-imagen.png");
+		producto8.setPrecio("40");
+		producto8.setOferta("ninguna");
+		
+		Productos producto9 =new Productos();
+		producto9.setId(9);
+		producto9.setNombre("gorro");
+		producto9.setDescripcion("esta hechos de piel de gallina de australia");
+		producto9.setImagen("no-imagen.png");
+		producto9.setPrecio("7000");
+		producto9.setOferta("ningu");
+		
+		
+		// se Agregaron  mas productos pq solo teniamos 2 att: javi
+		//julia ayudo 
+		
+		
 		
 		lista.add(producto1);
 		lista.add(producto2);
+		lista.add(producto3);
+		lista.add(producto4);
+		lista.add(producto5);
+		lista.add(producto6);
+		lista.add(producto7);
+		lista.add(producto8);
+		lista.add(producto9);
 		return lista;
 		
 	}
