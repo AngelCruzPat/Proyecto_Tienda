@@ -74,11 +74,11 @@ public class HomeController {
 		
 		Productos producto5 =new Productos();
 		producto5.setId(5);
-		producto5.setNombre("Calcetas");
-		producto5.setDescripcion("Calcetas para las patas");
+		producto5.setNombre("abrigo");
+		producto5.setDescripcion("abrigo de cuello de jirafas");
 		producto5.setImagen("no-imagen.png");
-		producto5.setPrecio("25");
-		producto5.setOferta("95%");
+		producto5.setPrecio("250");
+		producto5.setOferta("ninguna");
 		
 		Productos producto6 =new Productos();
 		producto6.setId(6);
