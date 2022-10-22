@@ -14,7 +14,7 @@ public class ProductosController {
 	@Autowired
 	private IProductosService serviceProductos;
 	
-	@GetMapping("/delete")
+	@GetMapping("/mensaje")
 	public String eliminar(@RequestParam("id") int id, Model model) {
 		System.out.println("Borrando vacante con ID: " + id);
 		model.addAttribute("id", id);	
@@ -22,7 +22,7 @@ public class ProductosController {
 		return "mensaje";
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/view/{id}")
 	public String verDetalle(@PathVariable("id") int id, Model model) {
 		
 		Productos producto = serviceProductos.buscarPorid(id);
