@@ -1,0 +1,69 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Contact Us</title>
+    
+    	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    	
+    	
+	    
+	    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+	    <link rel="stylesheet" th:href="@{/style.css}">
+	</head>
+
+<body>
+
+	<header th:insert="fragments/header :: header-principal"></header>
+	
+	<main role="main">     
+	      <hr>
+	      <div class="container"> 
+	
+	        <div class="card">
+	          <h4 class="card-header"><strong>Listado de Usuarios</strong></h4>              
+	          <div class="card-body">            
+	            <hr>
+	            <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+	            <table class="table table-hover">
+	              <thead class="thead-light">
+	                <tr>
+	                  <th scope="col">Nombre</th>
+	                  <th scope="col">Username</th>                  
+	                  <th scope="col">Email</th>
+	                  <th scope="col">Estatus</th>
+	                  <th scope="col">Operaciones</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <tr th:each="usuario : ${usuarios}">
+	                  <td th:text="${usuario.nombre}">Iván Eliseo Tinajero Díaz</td>
+	                  <td th:text="${usuario.username}">itinajero</td>                  
+	                  <td th:text="${usuario.email}">ivanetinajero@gmail.com</td>
+	                  <td th:text="${usuario.estatus == 1 ? 'Activo' : 'Bloqueado' }">Activo</td>
+	                  
+	                  <td>
+	                    <a th:href="@{/usuarios/delete/{id} (id=${usuario.id}) }" onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></a>
+	                    <a href="#" onclick="return confirm('¿Quiere bloquear el acceso al usuario?')" class="btn btn-success btn-sm" role="button" title="Bloquear el acceso al sistema para este usuario."><i class="fas fa-lock" aria-hidden="true"></i></a>	
+	                  </td>
+	                </tr>                
+	                               
+	              </tbody>
+	            </table>
+	            
+	          </div>
+	        </div>
+	      </div> <!-- /container -->
+
+    </main>
+
+<footer th:insert="fragments/footer :: footer-principal"></footer>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
+<script th:src="@{/js/bootstrap.min.js}"></script>  
+<script th:src="@{/js/active.js}"></script>  
+</body>
+</html>

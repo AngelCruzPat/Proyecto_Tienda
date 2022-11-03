@@ -1,47 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header th:insert="fragments/header :: header-principal">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>EmpleosApp | Formulario de registro</title>
+    <!-- Bootstrap core CSS -->
+    <!--<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">-->
+    <!-- Custom styles for this template -->
+    <!--<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">-->
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
     
-</header>
+    	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+	    <link rel="stylesheet" th:href="@{/style.css}">
+  </head>
 
+  <body>
 
-<section class="contact-us ">
-    <div class="container ">
-        <div class="row ">
-            <div class="col-md-6 center">
-                <div class="get_in_touch ">
-                   <h2>Registrate para conocer mas productos</h2>
-                    <form action="#" method="post">
-                        <p>Nombre del Usuario</p>
-                        <input type="text" name="">
-                        <p>Correo</p>
-                        <input type="email" name="">
-                        <p>Contraseña</p>
-                        <input type="password" name="">                        
-                        <input type="submit" value="enviar">
-                    </form>
+    <header th:insert="fragments/header :: header-principal"></header>
+
+    <main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Formulario de registro</strong></h4>              
+          <div class="card-body">
+            <form th:action="@{/signup}" th:object="${usuario}" method="post">              
+              <div class="row">
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre" placeholder="Escriba su nombre" required="required">
+                  </div>
                 </div>
-            </div>
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Escriba su correo electrónico" required="required">
+                  </div> 
+                </div>    
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" th:field="*{username}" id="username" name="username" placeholder="Escriba su nombre de usuario" required="required">
+                  </div>
+                </div>
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" th:field="*{password}" id="password" name="password" placeholder="Escriba su clave de acceso" required="required">
+                  </div>
+                </div>
+              </div>                  
+              <hr>
+              <button type="submit" title="Quiero registrarme." class="btn btn-primary">Registrarse</button>  
+            </form>
+          </div>
         </div>
-    </div>
-</section>
-<footer th:insert="fragments/footer :: footer-principal">
-    
-</footer>
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
-<script src="js/bootstrap.min.js"></script>  
-<script src="js/active.js"></script>  
-</body>
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer th:insert="fragments/footer :: footer-principal"></footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> 
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>     
+  </body>
 </html>
