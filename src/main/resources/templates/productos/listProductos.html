@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header th:insert="fragments/header :: header-principal"></header>
+
+
+<main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Listado de Productos en venta</strong></h4>              
+          <div class="card-body">
+            <a class="btn btn-primary" th:href="@{/productos/create}" title="Crear nuevo Productos" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
+            <hr>
+        
+            
+            <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+            
+            
+            
+            <table class="table table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Nombre</th>                  
+                  <th scope="col">Precio</th>
+                  <th scope="col">Estatus</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Descuento</th>
+                  <th scope="col">Destacada</th>
+                  <th scope="col">Operaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="productos : ${productos}">
+                  <td th:text="${productos.categoria.nombre}"></td>
+                  <td th:text="${productos.nombre}"></td>                  
+                  <td th:text="${productos.precio}"></td>
+                  <td th:text="${productos.estatus}"></td>
+                  <td th:text="${productos.marca}"></td>
+                  <td th:text="${productos.descuento}"></td>
+                  <td th:text="${productos.destacado==1 ? 'SI' : 'NO' }"></td>
+                  <td>
+                    <a th:href="@{/productos/edit/{id} (id=${productos.id}) }" class="btn btn-success btn-sm" role="button" title="Editar el Producto"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                    <a th:href="@{/productos/delete/{id} (id=${productos.id}) }" onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar el Producto."><i class="fas fa-trash" aria-hidden="true"></i></a>
+                  </td>
+                </tr>                                              
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>
+
+
+<footer th:insert="fragments/footer :: footer-principal"></footer>
+
+
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
+<script src="js/bootstrap.min.js"></script>  
+<script src="js/active.js"></script>    
+</body>
+</html>

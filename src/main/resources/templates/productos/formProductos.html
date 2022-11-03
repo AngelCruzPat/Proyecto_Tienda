@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" >
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header th:insert="fragments/header :: header-principal"></header>
+
+    <main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Datos de la oferta de trabajo</strong></h4>              
+          <div class="card-body">
+          
+          
+          
+          
+            <form th:action="@{/productos/save}" method="post" th:object="${productos}" enctype="multipart/form-data">
+            
+            
+              
+                        
+             <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role='alert'>
+				Por favor corrija los siguientes errores:
+				<ul>
+				<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+				</ul>
+				</div>         
+               
+                        
+              <div class="row">
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type= "hidden" th:field="*{id}" >
+                    <input type= "hidden" th:field="*{imagen}" >
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre" placeholder="Titulo del Producto" required="required">
+                  </div>
+                </div>
+                  
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="marca">Marca</label>
+                    <input type="text" class="form-control" th:field="*{marca}" id="marca" name="marca" placeholder="marca del Producto" required="required">
+                  </div>
+                </div> 
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="descuento">Descuento</label>
+                    <input type="text" class="form-control" th:field="*{descuento}" id="descuento" name="descuento" placeholder="Descuento del Producto" required="required">
+                  </div>
+                </div> 
+              </div>    
+              <div class="row">
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="categoria">Categoría</label>
+                    
+                    
+                    
+                     <select class="form-control" th:field="*{categoria.id}">
+                      <option th:each="categoria : ${categorias}" 
+		                      th:value="${categoria.id}" 
+		                      th:text="${categoria.nombre}"></option>                     
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="estatus">Estatus</label>
+                    <select class="form-control" th:field="*{estatus}" name="estatus" id="estatus">
+					  <option value="Creada">Creada</option>
+                      <option value="Aprobada">Aprobada</option>
+                      <option value="Eliminada">Eliminada</option>	
+                    </select>
+                  </div>
+                </div>
+                
+                
+                
+                
+                
+                <div class="col-md-3"> 
+                  <div class="form-check">
+                    <label class="form-check-label" for="destacado0"></label><br>
+                    <input class="form-check-input" type="radio" th:field="*{destacado}" name="destacado" id="destacado" value="1" checked="checked">
+                    <label class="form-check-label" for="destacado1">Destacado</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" th:field="*{destacado}" name="destacado" id="destacado" value="0">
+                    <label class="form-check-label" for="destacado2">No Destacado</label>
+                  </div>
+                </div>
+              </div>    
+              <div class="row">
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="text" class="form-control"  th:field="*{precio}" name="precio" id="precio" placeholder="Precio" required="required">
+                  </div>
+                </div>
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label for="archivoImagen">Imagen</label>
+                    <input type="file" class="form-control-file" name="archivoImagen" id="archivoImagen">
+                  </div>
+                </div>
+              </div> 
+              <hr>
+              <div class="row">
+                <div class="col-md-9"> 
+                  <div class="form-group">
+                    <label for="descripcion"><strong>Descripcion</strong></label>          
+                    <textarea class="form-control" th:field="*{descripcion}" name="descripcion" id="descripcion" rows="7"></textarea>
+                  </div> 
+                </div> 
+                <div class="col-md-3">
+                  <label for="imagen">Imagen/Logo</label>
+                  <img class="rounded mx-auto d-block" th:src="@{/logos/{img} (img=${productos.imagen})}" alt="Generic placeholder image" width="200" height="200">            
+                </div>
+              </div> 
+              <button type="submit" class="btn btn-primary">Guardar</button>  
+            </form>
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>
+
+     
+<footer th:insert="fragments/footer :: footer-principal"></footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>    
+    <script th:src="@{/tinymce/tinymce.min.js}"></script>
+    <script>
+      
+      $(function () {
+          $("#fecha").datepicker({dateFormat: 'dd-mm-yy'});
+        }
+      );
+      
+      
+      tinymce.init({
+          selector: '#detalles',
+          plugins: "textcolor, table lists code",
+          toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify \n\
+                    | bullist numlist outdent indent | forecolor backcolor table code"
+      });
+      
+   
+      
+    </script>
+  </body>
+</html>
